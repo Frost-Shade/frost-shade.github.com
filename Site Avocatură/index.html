@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="logo" href="Imagini/scales.png">
+  <title>Site cu întârziere</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(135deg, #357181, #d0d9e6); /* Fundal gradiențiat */
+    }
+    #main-text {
+      font-size: 3em; /* Textul este acum mai mare */
+      font-weight: bold;
+      margin-bottom: 20px;
+      opacity: 0;
+      transition: opacity 0.5s ease-in;
+      position: absolute;
+      top: 20px;
+      width: 100%;
+      color: #333; /* Textul are culoare închisă pentru contrast */
+    }
+    .buttons {
+      display: none; /* Butoanele sunt ascunse inițial */
+      position: absolute;
+      top: 150px; /* Poziționăm butoanele mai jos de text */
+      left: 20px; /* Poziționăm butoanele în colțul stâng */
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .buttons a {
+      font-family: 'Arial', sans-serif;
+      font-size: 1.2em;
+      padding: 12px 20px;
+      background-color: #66a9b6;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(14px); /* Adăugăm un efect de mișcare verticală */
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Tranziție lină pentru efectele de opacitate și mișcare */
+    }
+    .buttons a.show {
+      opacity: 1;
+      transform: translateY(0); /* Butoanele se mută în poziția lor normală */
+    }
+    .buttons a:hover {
+      background-color: #66a9b6;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    }
+    .navbar {
+      position: absolute;
+      top: 50px; /* Logo-ul va fi acum deasupra butoanelor */
+      left: -12%; /* Poziționăm logo-ul în partea stângă sus */
+    }
+    .nav-logo img {
+      width: 15%; /* Mărim logo-ul */
+    }
+  </style>
+</head>
+<body>
+  <div id="main-text">Biroul de Avocați Cahul</div>
+
+  <nav class="navbar">
+    <a href="#" class="nav-logo">
+      <img src="Imagini/img avocat.png" alt="Logo">
+    </a>
+  </nav>
+
+  <!-- Butoane pentru navigare, plasate în partea stângă sub text -->
+  <div class="buttons">
+    <a href="Instrumente/Despre noi.html">Despre noi</a>
+    <a href="Instrumente/lista si contactele.html">Lista / Contacte</a>
+  </div>
+
+  <script>
+    // După 1 secundă de la încărcarea paginii, textul și butoanele devin vizibile
+    setTimeout(() => {
+      document.getElementById("main-text").style.opacity = 1; // Textul devine vizibil
+      const buttons = document.querySelectorAll(".buttons a");
+      buttons.forEach(button => {
+        button.style.display = "block"; // Butoanele devin vizibile
+        button.classList.add("show"); // Adăugăm efectul de animație
+      });
+    }, 100);
+  </script>
+</body>
+</html>
